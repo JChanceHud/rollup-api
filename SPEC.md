@@ -109,7 +109,8 @@ params: [
 - `number`: `NUMBER` - the block number
 - `hash`: `DATA` - bytes - hash of the block
 - `parentHash`: `DATA` - bytes - hash of the parent block
-- `l1Hash`: `DATA` - 32 bytes - hash of the L1 network transaction including this L2 block
+- `l1BlockHash`: `DATA` - 32 bytes - hash of the L1 network block
+- `l1TxHash`: `DATA` - 32 bytes - hash of the L1 network transaction including this L2 block
 - `l1Gas`: `NUMBER` - The gas consumed in the L1 transaction
 - `l1GasPrice`: `NUMBER` - The gas price in the L1 transaction
 - `sender`: `DATA` - 20 bytes - Address of the L1 transaction sender
@@ -163,20 +164,41 @@ Returns the ERC20 token balance for a given address in the L2 network.
 ``` js
 // Request
 {
-  "jsonrpc": "1.0",
-  "id": "e91e6a69-b7f2-42ce-9e66-be562bbc5dec",
   "method": "l2_getERC20Balance",
   "params": [
     "0x407d73d8a49eeb85d32cf465507dd71d507100c1",
     "0x6B175474E89094C44Da98b954EedeAC495271d0F",
     "latest"
-  ]
+  ],
+  "jsonrpc": "1.0",
+  "id": "e91e6a69-b7f2-42ce-9e66-be562bbc5dec"
 }
 
 // Response
 {
+  "result": "0xD02AB486CEDC0000", // 15 DAI
   "id": "e91e6a69-b7f2-42ce-9e66-be562bbc5dec",
-  "jsonrpc": "1.0",
-  "result": "0xD02AB486CEDC0000" // 15 DAI
+  "jsonrpc": "1.0"
 }
 ```
+
+## l2_getTransactionByHash
+
+Returns data for an L2 transaction.
+
+#### Parameters
+
+1. `DATA` - bytes - The transaction hash
+
+#### Returns
+
+`Object` - A transaction object, or `null` if no tx found:
+  - `blockHash`: `DATA` - bytes - hash of the L2 block containing this transaction
+  - `blockNumber`: `NUMBER` - number of the L2 block containing this transaction
+  - `l1TxHash`: `DATA` - 32 bytes - hash of the L1 transaction containing the L2 block containing this transaction
+  - `l1BlockHash`: `DATA` - 32 bytes - hash of the L1 block containing the `l1TxHash`
+  - `from`: `DATA` - 20 bytes - sender of the transaction (not the coordinator who submitted)
+  - `hash`: `DATA` - bytes - hash of the transaction
+  - `input`: `DATA` - bytes - data included with the transaction
+  - `transactionIndex`: `NUMBER` - number of the transaction index position in the L2 block
+  - `applicationData`: `Object` - human readable application specific transaction information encoded as JSON
