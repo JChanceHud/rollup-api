@@ -201,4 +201,7 @@ Returns data for an L2 transaction.
   - `hash`: `DATA` - bytes - hash of the transaction
   - `input`: `DATA` - bytes - data included with the transaction
   - `transactionIndex`: `NUMBER` - number of the transaction index position in the L2 block
+  - `challenged`: `BOOLEAN` - true if the transaction validity has been challenged
+  - `invalid`: `BOOLEAN` - true if the transaction has been determined to be invalid
+  - `challengePeriodEnd`: `NUMBER` - unix timestamp of challenge period end, at which point the transaction is irreversible
   - `applicationData`: `Object` - human readable application specific transaction information encoded as JSON
