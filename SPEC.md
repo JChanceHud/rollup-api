@@ -8,19 +8,13 @@ This specification is modeled after the [Ethereum RPC API](https://eth.wiki/json
 
 **L2** - Layer 2 network, the chain of blocks containing transactions within the rollup
 
+## Ideas
+
+Things that might be useful.
+
+- Make this RPC API a superset of the Ethereum RPC API. Coordinators could proxy `eth_` calls to their provider. This would allow Rollup RPC APIs to be used as Web3 providers.
+
 ## Methods
-
-## l2_address
-
-Returns the address of the current L2 contract on the L1 chain.
-
-#### Parameters
-
-None
-
-#### Returns
-
-`DATA` - 20 bytes contract address on L1 chain
 
 ## l1_chainId
 
@@ -43,6 +37,18 @@ None
   "id": "6292c5d3-d83e-4de0-b54d-99a109362f88"
 }
 ```
+
+## l1_address
+
+Returns the address of the current L2 contract on the L1 chain.
+
+#### Parameters
+
+None
+
+#### Returns
+
+`DATA` - 20 bytes contract address on L1 chain
 
 ## l2_blockNumber
 
