@@ -13,6 +13,7 @@ This specification is modeled after the [Ethereum RPC API](https://eth.wiki/json
 Things that might be useful.
 
 - Make this RPC API a superset of the Ethereum RPC API. Coordinators could proxy `eth_` calls to their provider. This would allow Rollup RPC APIs to be used as Web3 providers.
+- This specification could include a common test suite that all projects implementing this interface may use.
 
 ## Methods
 
